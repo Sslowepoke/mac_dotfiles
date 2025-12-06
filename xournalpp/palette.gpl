@@ -1,0 +1,32 @@
+GIMP Palette
+Name: Xournal Default Palette
+#
+211 198 170 Foreground
+230 126 128 Red
+230 153 117 Orange
+219 188 127 Yellow
+167 192 128 Green
+127 187 179 Blue
+131 192 146 Aqua
+214 153 182 Purple
+84 58 72 Dim Red
+77 76 67 Dim Yellow
+66 80 71 Dim Green
+58 81 93 Dim Blue
+35 42 46 Dim Background
+
+#
+# GIMP Palette
+# Name: Xournal Default Palette
+# #
+# 0 0 0 Black
+# 0 128 0 Green
+# 0 192 255 Light Blue
+# 0 255 0 Light Green
+# 51 51 204 Blue
+# 128 128 128 Gray
+# 255 0 0 Red
+# 255 0 255 Magenta
+# 255 128 0 Orange
+# 255 255 0 Yellow
+# 255 255 255 White

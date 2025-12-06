@@ -1,0 +1,77 @@
+# auto update
+# YABAI_CERT=yabai-cert sh -c "$(curl -fsSL "https://git.io/update-yabai")" &
+
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+yabai -m config layout bsp
+
+# Space labels
+yabai -m space 1 --label main
+yabai -m space 2 --label web
+yabai -m space 3 --label chat
+yabai -m space 4 --label whatsapp
+yabai -m space 5 --label music
+yabai -m space 9 --label notes
+
+
+yabai -m rule --add app="^Zen$" space=web
+yabai -m rule --add app="^Discord$" space=chat
+yabai -m rule --add app="^Spotify$" space=music
+yabai -m rule --add app="^WhatsApp$" space=whatsapp
+yabai -m rule --add app="^Obsidian$" space=notes
+
+# yabai -m space 1 --layout float
+
+# Window rules
+yabai -m rule --add app="^(Calculator|System Preferences|System Settings|Archive Utility|Finder)$" manage=off
+yabai -m rule --add title="^Preferences" manage=off
+yabai -m rule --add title="^Settings" manage=off
+yabai -m rule --add app="^Steam$" manage=off
+yabai -m rule --add app="^League of Legends$" manage=off
+yabai -m rule --add app="^Notes$" manage=off
+yabai -m rule --add app="^QuickTime Player$" manage=off
+yabai -m rule --add app="^Weather$" manage=off
+yabai -m rule --add app="^rectangle" manage=off
+yabai -m rule --add app="^League of Legends$" manage=off
+yabai -m rule --add app="^MATLAB_R2025a$" manage=off
+# matlab plotovi
+yabai -m rule --add title="^Figure.*" manage=off
+yabai -m rule --add app="^Microsoft Teams$" manage=off
+yabai -m rule --add app="^Figures$" manage=off
+
+
+# Set all padding and gaps to 20pt (default: 0)
+# yabai -m config top_padding    10
+# yabai -m config bottom_padding 10
+# yabai -m config left_padding   10
+# yabai -m config right_padding  10
+# yabai -m config window_gap     10
+
+# Useful optional stuff
+# yabai -m config focus_follows_mouse autofocus
+yabai -m config window_shadow float
+yabai -m config window_border_width 1
+yabai -m config active_window_border_color  0xBF999999
+# yabai -m config window_opacity on
+# yabai -m config normal_window_opacity 0.9
+
+
+# Drag/resizes Windows with mouse without having to grab the edges first by holding ctrl
+# yabai -m config mouse_modifier ctrl
+# yabai -m config mouse_action1 move
+# yabai -m config mouse_action2 resize
+
+
+# yabai indicator things
+
+yabai -m signal --add event=mission_control_exit action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=display_added action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=display_removed action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_created action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_destroyed action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_focused action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_moved action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_resized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_minimized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_deminimized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'

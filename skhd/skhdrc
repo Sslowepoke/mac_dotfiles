@@ -1,0 +1,124 @@
+# https://github.com/koekeishiya/yabai/wiki/commands#focus-display
+# https://github.com/koekeishiya/dotfiles/blob/master/skhd/skhdrc
+
+.blacklist [
+    "league of legends"
+]
+
+# open apps
+# ctrl - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
+ctrl - return : /opt/homebrew/bin/alacritty
+
+
+# navigation
+ctrl - h : yabai -m window --focus west
+ctrl - l : yabai -m window --focus east
+ctrl - j : yabai -m window --focus south
+ctrl - k : yabai -m window --focus north
+
+# moving windows
+ctrl + shift - h : yabai -m window --warp west
+ctrl + shift - l : yabai -m window --warp east
+ctrl + shift - j : yabai -m window --warp south
+ctrl + shift - k : yabai -m window --warp north
+
+# rotate layout
+# ctrl - r : yabai -m space --rotate 90
+# balance the layout
+# ctrl - b : yabai -m space --balance
+
+# move focus container to display (use "space" instead of display to move to just per space instead)
+# ctrl + shift - z : yabai -m window --display 1 --focus # main monitor
+# ctrl + shift - x : yabai -m window --display 2 --focus # vertical
+# ctrl + shift - c : yabai -m window --display 3 --focus # laptop
+
+# move focus to display
+# ctrl - z : yabai -m display --focus 1
+# ctrl - x : yabai -m display --focus 2
+# ctrl - c : yabai -m display --focus 3
+
+# move focus container to space
+ctrl + shift - 1 : yabai -m window --space 1 --focus # main
+ctrl + shift - 2 : yabai -m window --space 2 --focus # web
+ctrl + shift - 3 : yabai -m window --space 3 --focus # discord
+ctrl + shift - 4 : yabai -m window --space 4 --focus # whatsapp
+ctrl + shift - 5 : yabai -m window --space 5 --focus # music
+ctrl + shift - 6 : yabai -m window --space 6 --focus # 
+ctrl + shift - 7 : yabai -m window --space 7 --focus #
+ctrl + shift - 8 : yabai -m window --space 8 --focus # 
+ctrl + shift - 9 : yabai -m window --space 9 --focus # notes
+ctrl + shift - 0 : yabai -m window --space 10 --focus # notes
+
+
+# resize windows
+# ctrl + alt - h : yabai -m window --resize left:-100:0 ; yabai -m window --resize right:-100:0
+# ctrl + alt - j : yabai -m window --resize bottom:0:100 ; yabai -m window --resize top:0:100
+# ctrl + alt - k : yabai -m window --resize top:0:-100 ; yabai -m window --resize bottom:0:-100
+# ctrl + alt - l : yabai -m window --resize right:100:0 ; yabai -m window --resize left:100:0
+
+# disable management for current space 
+
+
+# dfloat / unfloat window
+ctrl - t     : yabai -m window --toggle float
+
+# toggle sticky and topmost
+# ctrl - s         : yabai -m window --toggle sticky; \
+#                    yabai -m window --toggle topmost;
+
+# make fullscreen
+ctrl - f         : yabai -m window --toggle zoom-fullscreen
+# toggle padding on/off
+# ctrl - g         : yabai -m space --toggle padding --toggle gap
+# disable padding overall
+
+# ctrl - y         : yabai -m config top_padding 0 \ yabai -m config bottom_padding 0 \ yabai -m config left_padding 0 \ yabai -m config right_padding 0 \ yabai -m config window_gap 0
+
+# ctrl - u         : yabai -m config top_padding    10 \ yabai -m config bottom_padding 10 \ yabai -m config left_padding   10 \ yabai -m config right_padding  10 \ yabai -m config window_gap     10
+
+# toggle floating/bsp
+# ctrl - i         : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
+# ctrl - o         : yabai -m config focus_follows_mouse autofocus
+# ctrl - p         : yabai -m config focus_follows_mouse off
+
+# change desktop
+ctrl - 1 : yabai -m space --focus 1
+ctrl - 2 : yabai -m space --focus 2
+ctrl - 3 : yabai -m space --focus 3
+ctrl - 4 : yabai -m space --focus 4
+ctrl - 5 : yabai -m space --focus 5
+ctrl - 6 : yabai -m space --focus 6
+ctrl - 7 : yabai -m space --focus 7
+ctrl - 8 : yabai -m space --focus 8
+ctrl - 9 : yabai -m space --focus 9
+ctrl - 0 : yabai -m space --focus 10
+
+
+
+# unused
+# ctrl - 1 : yabai -m display --focus 3
+# ctrl - 2 : yabai -m display --focus 1
+# ctrl - 3 : yabai -m display --focus 2
+
+# create space on the active display
+# ctrl - n : yabai -m space --create
+
+# delete focused space and focus first space on display
+# ctrl - m : yabai -m space --destroy
+
+# control audio output device
+# ctrl - e : switchaudiosource -s "G733 Gaming Headset"
+# ctrl - r : switchaudiosource -s "Scarlett Solo USB"
+
+# destroy empty spaces
+# ctrl + alt + shift - d : yabai -m query --spaces --display | \
+#      jq -re 'map(select(."is-native-fullscreen" == false)) | length > 1' \
+#      && yabai -m query --spaces | \
+#           jq -re 'map(select(."windows" == [] and ."has-focus" == false).index) | reverse | .[] ' | \
+#           xargs -i % sh -c 'yabai -m space % --destroy'
+
+# change keyboard language
+# ctrl - 
+
+
+#todo create missing spaces, delete unnecessary ones, create missing spaces again
